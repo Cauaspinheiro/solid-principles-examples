@@ -1,0 +1,23 @@
+{
+  "name": "solid-principles-examples",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Cauaspinheiro/solid-principles-examples.git",
+  "author": "Cauaspinheiro <56241309+Cauaspinheiro@users.noreply.github.com>",
+  "license": "MIT",
+  "private": "true",
+  "scripts": {
+    "ct": "git-cz"
+  },
+  "workspaces": [
+    "example-1"
+  ],
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "devDependencies": {
+    "commitizen": "^4.2.1"
+  }
+}
