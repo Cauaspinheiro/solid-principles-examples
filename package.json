@@ -10,7 +10,7 @@
     "ct": "git-cz"
   },
   "workspaces": [
-    "example-1"
+    "1-weather-app"
   ],
   "config": {
     "commitizen": {
