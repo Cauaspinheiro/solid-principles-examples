@@ -1,8 +1,8 @@
 import React from 'react';
-import './App.css';
+import Home from './pages/Home';
 
 function App() {
-  return <h1>SOLID principles</h1>;
+  return <Home />;
 }
 
 export default App;
