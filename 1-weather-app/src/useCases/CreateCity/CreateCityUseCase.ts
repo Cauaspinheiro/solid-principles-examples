@@ -1,16 +1,14 @@
 import ICreateCityDTO from './CreateCityDTO'
 import IWeatherProvider from '../../providers/WeatherProvider/IWeatherProvider'
 import ICitiesRepository from '../../repositories/CitiesRepository/ICitiesRepository'
-import CreateCityUseCaseReturn from './CreateCityUseCaseReturn'
 import City from '../../entities/City'
-import ICreateCityUseCase from './ICreateCityUseCase'
 
 export interface ICreateCityUseCaseProps {
   weatherProvider: IWeatherProvider
   citiesRepository: ICitiesRepository
 }
 
-export default class CreateCityUseCase implements ICreateCityUseCase {
+export default class CreateCityUseCase {
   private weatherProvider: IWeatherProvider
   private citiesRepository: ICitiesRepository
 
@@ -23,10 +21,10 @@ export default class CreateCityUseCase implements ICreateCityUseCase {
     const cityAlreadyExists = await this.citiesRepository.findByName(data.name)
 
     if (cityAlreadyExists) {
-      return new CreateCityUseCaseReturn({
+      return {
         error: 'City already exists',
         city: cityAlreadyExists,
-      })
+      }
     }
 
     const weatherApiObject = await this.weatherProvider.getWeatherByCityName({
@@ -38,8 +36,8 @@ export default class CreateCityUseCase implements ICreateCityUseCase {
 
     this.citiesRepository.save(city)
 
-    return new CreateCityUseCaseReturn({
+    return {
       city,
-    })
+    }
   }
 }
