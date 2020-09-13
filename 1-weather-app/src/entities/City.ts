@@ -1,7 +1,7 @@
 export default class City {
   public name: string
   public country: string
-  public date: Date
+  readonly date = new Date()
 
   public temperature: number
   public minTemperature: number
@@ -12,17 +12,16 @@ export default class City {
 
   public humidity: number
 
-  constructor(obj: City) {
-    this.name = obj.name
-    this.country = obj.country
-    this.date = obj.date
+  constructor(constructorObj: Omit<City, 'date'>) {
+    this.name = constructorObj.name
+    this.country = constructorObj.country
 
-    this.temperature = obj.temperature
-    this.minTemperature = obj.minTemperature
-    this.maxTemperature = obj.maxTemperature
+    this.temperature = constructorObj.temperature
+    this.minTemperature = constructorObj.minTemperature
+    this.maxTemperature = constructorObj.maxTemperature
 
-    this.climateIcon = obj.climateIcon
-    this.climateDescription = obj.climateDescription
-    this.humidity = obj.humidity
+    this.climateIcon = constructorObj.climateIcon
+    this.climateDescription = constructorObj.climateDescription
+    this.humidity = constructorObj.humidity
   }
 }
