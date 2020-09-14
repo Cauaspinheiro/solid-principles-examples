@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import City from '../../entities/City'
-import CreateCity from '../../useCases/CreateCity'
+import { createCityController } from '../../useCases/CreateCity'
+import { reloadAllCitiesController } from '../../useCases/ReloadAllCities'
 import { Card, Header, Input } from './components'
 
 import { Container, Form, Button } from './styles'
@@ -9,15 +10,12 @@ const Home: React.FC = () => {
   const [cities, setCities] = useState<City[]>([])
   const [cityName, setCityName] = useState('')
 
-  async function handleCreateCity(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
 
     if (cityName.trim() === '') return alert('INPUT NOT VALID')
 
-    const {
-      city,
-      error,
-    } = await CreateCity.createCityController.handleCreateCity({
+    const { city, error } = await createCityController.handleCreateCity({
       name: cityName,
     })
 
@@ -30,10 +28,27 @@ const Home: React.FC = () => {
     setCities([...cities, city])
   }
 
+  useEffect(() => {
+    async function getAllCities() {
+      const {
+        cities,
+        error,
+      } = await reloadAllCitiesController.handleReloadAllCities()
+
+      if (error || !cities || !(cities.length > 0)) {
+        return alert(error || 'SOMETHING WENT WRONG')
+      }
+
+      setCities(cities)
+    }
+
+    getAllCities()
+  }, [])
+
   return (
     <Container>
       <Header />
-      <Form onSubmit={handleCreateCity}>
+      <Form onSubmit={handleSubmit}>
         <Input
           label="City"
           value={cityName}
