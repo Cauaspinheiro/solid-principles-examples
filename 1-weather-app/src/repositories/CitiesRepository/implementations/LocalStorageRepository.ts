@@ -45,4 +45,14 @@ export default class LocalStorageRepository implements ICitiesRepository {
 
     localStorage.setItem(REPOSITORY_KEY, JSON.stringify(cities))
   }
+
+  async getAllCities() {
+    const storageValue = localStorage.getItem(REPOSITORY_KEY)
+
+    if (!storageValue) return []
+
+    const cities: ILocalStorageRepositorySchema[] = JSON.parse(storageValue)
+
+    return cities
+  }
 }
