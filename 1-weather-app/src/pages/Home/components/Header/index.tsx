@@ -6,13 +6,17 @@ import {
   HeaderTitle,
 } from './styles'
 
-export default function Header() {
+const Header: React.FC = ({ children }) => {
   return (
     <HeaderContainer>
       <HeaderContent>
         <HeaderTitle>Simple Weather App</HeaderTitle>
         <HeaderSubtitle>I hope it's a sunny day</HeaderSubtitle>
+
+        {children}
       </HeaderContent>
     </HeaderContainer>
   )
 }
+
+export default Header

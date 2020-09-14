@@ -47,18 +47,20 @@ const Home: React.FC = () => {
 
   return (
     <HomeContainer>
-      <Header />
-      <Form onSubmit={handleSubmit}>
-        <Input
-          label="City"
-          value={cityName}
-          name="city"
-          onChange={({ target }) => {
-            setCityName(target.value)
-          }}
-        />
-        <Button type="submit">Procurar Cidade</Button>
-      </Form>
+      <Header>
+        <Form onSubmit={handleSubmit}>
+          <Input
+            label="Search for a city"
+            value={cityName}
+            name="city"
+            placeholder="My lovely city"
+            onChange={({ target }) => {
+              setCityName(target.value)
+            }}
+          />
+          <Button type="submit">Procurar Cidade</Button>
+        </Form>
+      </Header>
 
       {cities.map((city, index) => (
         <Card city={city} key={index} />

@@ -11,7 +11,7 @@ export default createGlobalStyle`
     --color-primary: #4D9FFF;
     --color-primary-light: #77B6FF;
     --color-primary-dark: #00418E;
-    --color-title-in-primary: #ffffff;
+    --color-title-primary: #ffffff;
     --color-input-background: #f8f8fc;
     --color-input-text: #BCC4CC;
     --color-text-base: #f5f5f5;

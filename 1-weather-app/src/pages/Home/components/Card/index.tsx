@@ -10,7 +10,7 @@ export interface ICardProps {
 const Card: React.FC<ICardProps> = ({ city }) => {
   return (
     <CardContainer>
-      <h1>{JSON.stringify(city)}</h1>
+      <p style={{ color: '#000' }}>{JSON.stringify(city)}</p>
     </CardContainer>
   )
 }

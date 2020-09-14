@@ -8,7 +8,7 @@ export const HeaderContainer = styled.div`
   justify-content: center;
 
   @media (min-width: 800px) {
-    height: 260px;
+    height: 324px;
   }
 `
 
@@ -33,6 +33,8 @@ export const HeaderContent = styled.div`
     display: flex;
     justify-content: center;
     align-items: flex-start;
+
+    padding-bottom: 0;
   }
 `
 

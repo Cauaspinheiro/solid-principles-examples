@@ -12,6 +12,46 @@ export const HomeContainer = styled(Container)`
 
 export const Form = styled.form`
   display: flex;
+
+  width: 100%;
+
+  flex-direction: column;
+
+  margin-top: 16px;
+
+  @media (min-width: 800px) {
+    flex-direction: column;
+    justify-content: flex-start;
+
+    margin-top: 3.2rem;
+  }
 `
 
-export const Button = styled.button``
+export const Button = styled.button`
+  width: 90%;
+  height: 44px;
+
+  margin-top: 16px;
+  align-self: center;
+
+  background: var(--color-primary-light);
+
+  border: none;
+  border-radius: 6px;
+
+  outline: none;
+
+  transition: background 0.3s;
+
+  &:hover {
+    background: #5ea8ff;
+  }
+
+  color: var(--color-title-primary);
+  font: 500 1.6rem Poppins;
+
+  @media (min-width: 800px) {
+    width: 40%;
+    align-self: flex-start;
+  }
+`
