@@ -1,10 +1,9 @@
 import City from '../../entities/City'
 
-export interface IWeatherReqData {
-  city: string
-  unit: string
+export interface IWeatherOptions {
+  unit: WeatherUnits
 }
 
 export default interface IWeatherProvider {
-  getWeatherByCityName(req: IWeatherReqData): Promise<City>
+  getWeatherByCityName(cityName: string, opts?: IWeatherOptions): Promise<City>
 }
