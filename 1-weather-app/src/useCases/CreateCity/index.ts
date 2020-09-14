@@ -6,11 +6,11 @@ import CreateCityUseCase from './CreateCityUseCase'
 const localStorageRepository = new LocalStorageRepository()
 const openWeatherProvider = new OpenWeatherProvider()
 
-const createCityUseCase = new CreateCityUseCase({
+export const createCityUseCase = new CreateCityUseCase({
   citiesRepository: localStorageRepository,
   weatherProvider: openWeatherProvider,
 })
 
-const createCityController = new CreateCityController({ createCityUseCase })
-
-export default { createCityUseCase, createCityController }
+export const createCityController = new CreateCityController({
+  createCityUseCase,
+})
