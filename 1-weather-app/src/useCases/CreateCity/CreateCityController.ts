@@ -1,3 +1,4 @@
+import City from '../../entities/City'
 import CreateCityUseCase from './CreateCityUseCase'
 
 export interface ICreateCityControllerProps {
@@ -6,9 +7,14 @@ export interface ICreateCityControllerProps {
 
 export interface IHandleCreateCityProps {
   name: string
-  opts: {
+  opts?: {
     units: WeatherUnits
   }
+}
+
+export interface IHandleCreateCityReturn {
+  error?: string
+  city?: City
 }
 
 export default class CreateCityController {
@@ -18,15 +24,22 @@ export default class CreateCityController {
     this.createCityUseCase = props.createCityUseCase
   }
 
-  async handleCreateCity(props: IHandleCreateCityProps) {
-    const { city, error } = await this.createCityUseCase.createCity({
-      name: props.name,
-      unit: props.opts.units || 'metric',
-    })
+  async handleCreateCity({
+    name,
+    opts = { units: 'metric' },
+  }: IHandleCreateCityProps): Promise<IHandleCreateCityReturn> {
+    try {
+      const city = await this.createCityUseCase.createCity({
+        name: name,
+        unit: opts.units,
+      })
 
-    return {
-      city,
-      error,
+      return {
+        city,
+        error: undefined,
+      }
+    } catch (error) {
+      return { error, city: undefined }
     }
   }
 }
