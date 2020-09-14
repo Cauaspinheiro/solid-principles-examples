@@ -4,7 +4,7 @@ import { createCityController } from '../../useCases/CreateCity'
 import { reloadAllCitiesController } from '../../useCases/ReloadAllCities'
 import { Card, Header, Input } from './components'
 
-import { Container, Form, Button } from './styles'
+import { HomeContainer, Form, Button } from './styles'
 
 const Home: React.FC = () => {
   const [cities, setCities] = useState<City[]>([])
@@ -46,7 +46,7 @@ const Home: React.FC = () => {
   }, [])
 
   return (
-    <Container>
+    <HomeContainer>
       <Header />
       <Form onSubmit={handleSubmit}>
         <Input
@@ -63,7 +63,7 @@ const Home: React.FC = () => {
       {cities.map((city, index) => (
         <Card city={city} key={index} />
       ))}
-    </Container>
+    </HomeContainer>
   )
 }
 
