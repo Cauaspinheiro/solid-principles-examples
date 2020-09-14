@@ -1,15 +1,19 @@
 import React, { useState } from 'react'
 import City from '../../entities/City'
 import CreateCity from '../../useCases/CreateCity'
-import { Card, Header, Input, Button } from './components'
+import { Card, Header, Input } from './components'
 
-import { Container, Row } from './styles'
+import { Container, Form, Button } from './styles'
 
 const Home: React.FC = () => {
   const [cities, setCities] = useState<City[]>([])
   const [cityName, setCityName] = useState('')
 
-  async function handleCreateCity() {
+  async function handleCreateCity(e: React.FormEvent) {
+    e.preventDefault()
+
+    if (cityName.trim() === '') return alert('INPUT NOT VALID')
+
     const {
       city,
       error,
@@ -29,7 +33,7 @@ const Home: React.FC = () => {
   return (
     <Container>
       <Header />
-      <Row>
+      <Form onSubmit={handleCreateCity}>
         <Input
           label="City"
           value={cityName}
@@ -38,8 +42,8 @@ const Home: React.FC = () => {
             setCityName(target.value)
           }}
         />
-        <Button onClick={handleCreateCity} />
-      </Row>
+        <Button type="submit">Procurar Cidade</Button>
+      </Form>
 
       {cities.map((city, index) => (
         <Card city={city} key={index} />
