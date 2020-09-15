@@ -10,7 +10,8 @@
     "ct": "git-cz"
   },
   "workspaces": [
-    "1-weather-app"
+    "1-weather-app",
+    "1-roman-decimal-converter"
   ],
   "config": {
     "commitizen": {
