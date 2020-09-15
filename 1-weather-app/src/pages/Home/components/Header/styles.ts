@@ -23,8 +23,6 @@ export const HeaderContent = styled.div`
   align-self: flex-start;
 
   @media (min-width: 800px) {
-    flex: 1;
-
     width: 100%;
     max-width: 800px;
 
