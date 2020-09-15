@@ -4,7 +4,7 @@ import { createCityController } from '../../useCases/CreateCity'
 import { reloadAllCitiesController } from '../../useCases/ReloadAllCities'
 import { Card, Header, Input } from './components'
 
-import { HomeContainer, Form, Button } from './styles'
+import { HomeContainer, Form, Button, HomeListView } from './styles'
 
 const Home: React.FC = () => {
   const [cities, setCities] = useState<City[]>([])
@@ -22,10 +22,10 @@ const Home: React.FC = () => {
     setCityName('')
 
     if (error || !city) {
-      return alert(error || 'SOMETHING WENT WRONG')
+      return alert(error ?? 'SOMETHING WENT WRONG')
     }
 
-    setCities([...cities, city])
+    setCities([city, ...cities])
   }
 
   useEffect(() => {
@@ -35,11 +35,11 @@ const Home: React.FC = () => {
         error,
       } = await reloadAllCitiesController.handleReloadAllCities()
 
-      if (error || !cities || !(cities.length > 0)) {
-        return alert(error || 'SOMETHING WENT WRONG')
+      if (error) {
+        return alert(error ?? 'NOT POSSIBLE TO RELOAD CITIES')
       }
 
-      setCities(cities)
+      setCities(cities ?? [])
     }
 
     getAllCities()
@@ -53,7 +53,7 @@ const Home: React.FC = () => {
             label="Search for a city"
             value={cityName}
             name="city"
-            placeholder="My lovely city"
+            placeholder="Ex: My lovely city"
             onChange={({ target }) => {
               setCityName(target.value)
             }}
@@ -62,9 +62,11 @@ const Home: React.FC = () => {
         </Form>
       </Header>
 
-      {cities.map((city, index) => (
-        <Card city={city} key={index} />
-      ))}
+      <HomeListView>
+        {cities.map((city, index) => (
+          <Card city={city} key={index} />
+        ))}
+      </HomeListView>
     </HomeContainer>
   )
 }

@@ -55,3 +55,20 @@ export const Button = styled.button`
     align-self: flex-start;
   }
 `
+
+export const HomeListView = styled.main`
+  margin: 3.2rem auto;
+  width: 90%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+
+  @media (min-width: 800px) {
+    width: 100%;
+    max-width: 800px;
+
+    margin: 2.4rem auto;
+  }
+`
