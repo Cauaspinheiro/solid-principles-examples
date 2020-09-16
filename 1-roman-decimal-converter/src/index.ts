@@ -1,7 +1,5 @@
-import express from 'express'
+import DevApp from './app/implementations/DevApp'
 
-const app = express()
+const server = new DevApp().server
 
-app.get('/', (req, res) => res.json('Hello World'))
-
-app.listen(3001)
+server.listen(3001)

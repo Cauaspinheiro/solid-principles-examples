@@ -8,12 +8,14 @@
     "ct": "git-cz"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.7",
     "@types/express": "^4.17.8",
     "commitizen": "^4.2.1",
     "ts-node-dev": "^1.0.0-pre.62",
     "typescript": "^4.0.2"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1"
   },
   "config": {
